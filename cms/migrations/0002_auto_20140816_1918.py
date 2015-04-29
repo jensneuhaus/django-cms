@@ -4,14 +4,9 @@ from __future__ import unicode_literals
 import cms.models.static_placeholder
 import cms.models.fields
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.db import models, migrations
 import django.utils.timezone
 
-User = get_user_model()
-
-user_model_label = '%s.%s' % (User._meta.app_label, User._meta.model_name)
-user_ptr_name = '%s_ptr' % User._meta.object_name.lower()
 
 
 class Migration(migrations.Migration):
@@ -24,30 +19,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='PageUser',
-            fields=[
-                (user_ptr_name, models.OneToOneField(primary_key=True, to=settings.AUTH_USER_MODEL, auto_created=True, parent_link=True, serialize=False)),
-                ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='created_users')),
-            ],
-            options={
-                'verbose_name': 'User (page)',
-                'verbose_name_plural': 'Users (page)',
-            },
-            bases=(user_model_label,),
-        ),
-        migrations.CreateModel(
-            name='PageUserGroup',
-            fields=[
-                ('group_ptr', models.OneToOneField(primary_key=True, to='auth.Group', auto_created=True, parent_link=True, serialize=False)),
-                ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='created_usergroups')),
-            ],
-            options={
-                'verbose_name': 'User group (page)',
-                'verbose_name_plural': 'User groups (page)',
-            },
-            bases=('auth.group',),
-        ),
         migrations.CreateModel(
             name='Placeholder',
             fields=[
