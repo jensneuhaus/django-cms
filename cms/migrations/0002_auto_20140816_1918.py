@@ -25,30 +25,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='PageUser',
-            fields=[
-                (user_ptr_name, models.OneToOneField(primary_key=True, to=settings.AUTH_USER_MODEL, auto_created=True, parent_link=True, serialize=False)),
-                ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='created_users')),
-            ],
-            options={
-                'verbose_name': 'User (page)',
-                'verbose_name_plural': 'Users (page)',
-            },
-            bases=(user_model_label,),
-        ),
-        migrations.CreateModel(
-            name='PageUserGroup',
-            fields=[
-                ('group_ptr', models.OneToOneField(primary_key=True, to='auth.Group', auto_created=True, parent_link=True, serialize=False)),
-                ('created_by', models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='created_usergroups')),
-            ],
-            options={
-                'verbose_name': 'User group (page)',
-                'verbose_name_plural': 'User groups (page)',
-            },
-            bases=('auth.group',),
-        ),
-        migrations.CreateModel(
             name='Placeholder',
             fields=[
                 ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
